@@ -1,8 +1,10 @@
 package org.geektimes.projects.user.sql;
 
-import org.geektimes.projects.user.context.ComponentContext;
+import org.geektimes.context.ComponentContext;
 import org.geektimes.projects.user.domain.User;
 
+import javax.annotation.Resource;
+import javax.persistence.EntityManager;
 import javax.sql.DataSource;
 import java.beans.BeanInfo;
 import java.beans.Introspector;
@@ -16,7 +18,15 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class DBConnectionManager {
+
     private final Logger logger = Logger.getLogger(DBConnectionManager.class.getName());
+
+    @Resource(name = "jdbc/UserPlatformDB")
+    private DataSource dataSource;
+
+    @Resource(name = "bean/EntityManager")
+    private EntityManager entityManager;
+
     public Connection getConnection() {
         ComponentContext componentContext = ComponentContext.getInstance();
         DataSource dataSource = componentContext.getComponent("jdbc/UserPlatformDB");
@@ -32,6 +42,11 @@ public class DBConnectionManager {
         }
         return connection;
     }
+
+    public EntityManager getEntityManager() {
+        logger.info("当前 EntityManager 实现类：" + entityManager.getClass().getName());
+        return entityManager;
+}
 
     public void releaseConnection() {
 //        if (this.connection != null) {

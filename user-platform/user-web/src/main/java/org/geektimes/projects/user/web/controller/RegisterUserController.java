@@ -6,6 +6,7 @@ import org.geektimes.projects.user.service.UserService;
 import org.geektimes.projects.user.sql.DBConnectionManager;
 import org.geektimes.web.mvc.controller.PageController;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.GET;
@@ -18,12 +19,13 @@ import java.util.logging.Logger;
 public class RegisterUserController  implements PageController {
     private final Logger logger = Logger.getLogger(RegisterUserController.class.getName());
 
-    private final UserService userServerice = new UserServericeImpl();
+    @Resource(name="bean/UserService")
+    private  UserService userServerice;
+
     @POST
     @Path("/register")
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Throwable {
-        logger.log(Level.ALL,"方法成功");
         User user = new User();
         user.setEmail(request.getParameter("email"));
         user.setName(request.getParameter("userName"));
