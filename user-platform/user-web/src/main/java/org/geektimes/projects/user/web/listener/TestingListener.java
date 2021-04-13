@@ -1,6 +1,6 @@
 package org.geektimes.projects.user.web.listener;
 
-import org.geektimes.projects.user.context.ComponentContext;
+import org.geektimes.context.ComponentContext;
 import org.geektimes.projects.user.sql.DBConnectionManager;
 
 import javax.servlet.ServletContext;
@@ -16,9 +16,9 @@ public class TestingListener implements ServletContextListener {
 
     @Override
     public void contextInitialized(ServletContextEvent sce) {
-        ComponentContext context = ComponentContext.getInstance();
+  /*      ComponentContext context = ComponentContext.getInstance();
         DBConnectionManager dbConnectionManager = context.getComponent("bean/DBConnectionManager");
-        dbConnectionManager.getConnection();
+        dbConnectionManager.getConnection();*/
     }
 
     @Override
