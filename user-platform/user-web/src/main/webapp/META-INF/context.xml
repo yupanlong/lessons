@@ -45,5 +45,7 @@
     <Resource name="bean/Validator" auth="Container"
               type="org.geektimes.projects.user.valitador.bean.valitador.DelegatingValidator"
               factory="org.apache.naming.factory.BeanFactory" />
-
+    <!-- JNDI 配置值-->
+    <Environment name="maxValue" value="10"
+                 type="java.lang.Integer" override="false"/>
 </Context>

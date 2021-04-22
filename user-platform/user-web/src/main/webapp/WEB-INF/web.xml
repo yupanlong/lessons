@@ -5,6 +5,11 @@
          http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
          metadata-complete="true" version="2.5">
 
+    <context-param>
+        <param-name>application.name</param-name>
+        <param-value>user-web</param-value>
+    </context-param>
+
     <!-- 请确保这个 Listener 放置在首位 -->
     <listener>
         <listener-class>org.geektimes.projects.user.web.listener.ComponentContextInitializerListener</listener-class>
@@ -94,9 +99,9 @@
         <welcome-file>/index.jsp</welcome-file>
     </welcome-file-list>
 
-    <resource-ref>
+<!--    <resource-ref>
         <description>DB Connection</description>
-        <!-- JNDI javax.naming.Name -->
+        &lt;!&ndash; JNDI javax.naming.Name &ndash;&gt;
         <res-ref-name>jdbc/UserPlatformDB</res-ref-name>
         <res-type>javax.sql.DataSource</res-type>
         <res-auth>Container</res-auth>
@@ -112,6 +117,6 @@
         <resource-env-ref-type>
             org.geektimes.projects.user.sql.DBConnectionManager
         </resource-env-ref-type>
-    </resource-env-ref>
+    </resource-env-ref>-->
 
 </web-app>
